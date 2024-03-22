@@ -5,12 +5,12 @@ export const Container = styled("ul")`
     background: rgb(2, 0, 36);
     color: white;
   }
-  ul {
+  .list {
     display: flex;
     gap: 20px;
     justify-content: center;
   }
-  li {
+  .item {
     font-size: 3rem;
     padding: 20px;
     position: relative;
@@ -19,10 +19,10 @@ export const Container = styled("ul")`
     width: fit-content;
     cursor: pointer;
   }
-  li:hover {
+  .item:hover {
     transform: skew(10deg);
   }
-  li::before {
+  .item::before {
     content: attr(data-name);
     position: absolute;
     top: 0;
@@ -33,13 +33,13 @@ export const Container = styled("ul")`
     transition: all 300ms ease;
     padding-left: 20px;
   }
-  li:hover::before {
+  .item:hover::before {
     top: -3px;
     left: 0px;
     color: hotpink;
   }
 
-  li::after {
+  .item::after {
     content: "";
     height: 4px;
     width: 0;
@@ -50,7 +50,7 @@ export const Container = styled("ul")`
     background: hotpink;
     transition: all 300ms ease;
   }
-  li:hover::after {
+  .item:hover::after {
     width: 120%;
     outline: 5px solid rgb(2, 0, 36);
   }

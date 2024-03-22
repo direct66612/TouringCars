@@ -4,6 +4,7 @@ body {
   font-weight: 500;
   color: #101828;
   --text: #475467;
+  --bgcategories: #f2f4f7;
   --bginputs: #f7f7f7;
   --bgbutton: #e44848;
 }
@@ -47,6 +48,8 @@ img {
   height: auto;
 }
 .container {
+  display: flex;
+  gap: 64px;
   max-width: 100%;
   margin: 0 auto;
   margin-top: 80px;

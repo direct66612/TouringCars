@@ -6,18 +6,18 @@ export const Layout = () => {
   return (
     <Container>
       <header>
-        <ul>
-          <li>
+        <ul className="list">
+          <li className="item">
             <Link className="link" data-name="home" to="/">
               Home
             </Link>
           </li>
-          <li>
+          <li className="item">
             <Link className="link" data-name="catalog" to="/catalog">
               Catalog
             </Link>
           </li>
-          <li>
+          <li className="item">
             <Link className="link" data-name="favorites" to="/favorites">
               Favorites
             </Link>
