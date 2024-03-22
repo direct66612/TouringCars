@@ -23,18 +23,31 @@ export const Title = styled("h3")`
   margin-bottom: 8px;
 `;
 export const RatingContainer = styled("div")`
+  position: relative;
   display: flex;
   gap: 36px;
   padding-left: 20px;
   margin-bottom: 24px;
+  .rating__icon {
+    position: absolute;
+    top: 2px;
+    left: 0;
+  }
 `;
 export const Rating = styled("a")`
   font-weight: 400;
   border-bottom: 1px solid #101828;
   padding-bottom: 1px;
 `;
-export const Location = styled("p")`
+export const Location = styled("span")`
+  position: relative;
   font-weight: 400;
+  padding-left: 20px;
+  .location__icon {
+    position: absolute;
+    top: 2px;
+    left: 0;
+  }
 `;
 export const Description = styled("p")`
   font-weight: 400;
