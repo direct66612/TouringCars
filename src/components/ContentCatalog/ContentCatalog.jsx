@@ -16,113 +16,61 @@ import {
   Title,
 } from "./ContentCatalog.styled";
 
-export const ContentCatalog = () => {
+export const ContentCatalog = ({ adverts }) => {
   return (
     <ul>
-      <Item>
-        <Images src={car} alt="car" />
-        <Info>
-          <Title>Mavericks</Title>
-          <RatingContainer>
-            <Rating href="kphrhr">
-              <svg className="rating__icon" width="16" height="16">
-                <use href={`${sprite}#icon-star`} />
-              </svg>
-              4.4(2 Reviews)
-            </Rating>
-            <Location>
-              <svg
-                className="location__icon"
-                width="16"
-                height="16"
-                fill="none"
-                stroke="#101828"
-              >
-                <use href={`${sprite}#icon-location-map`} />
-              </svg>
-              Kyiv, Ukraine
-            </Location>
-          </RatingContainer>
-          <Description>
-            The pictures shown here are example vehicles of the respective.
-          </Description>
-          <CategoriesContainer>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-          </CategoriesContainer>
-          <Button>Show more</Button>
-        </Info>
-      </Item>
-      <Item>
-        <Images src={car} alt="car" />
-        <Info>
-          <Title>Mavericks</Title>
-          <RatingContainer>
-            <Rating href="kphrhr">4.4(2 Reviews)</Rating>
-            <Location>Kyiv, Ukraine</Location>
-          </RatingContainer>
-          <Description>
-            The pictures shown here are example vehicles of the respective.
-          </Description>
-          <CategoriesContainer>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-          </CategoriesContainer>
-          <Button>Show more</Button>
-        </Info>
-      </Item>
-      <Item>
-        <Images src={car} alt="car" />
-        <Info>
-          <Title>Mavericks</Title>
-          <RatingContainer>
-            <Rating href="kphrhr">4.4(2 Reviews)</Rating>
-            <Location>Kyiv, Ukraine</Location>
-          </RatingContainer>
-          <Description>
-            The pictures shown here are example vehicles of the respective.
-          </Description>
-          <CategoriesContainer>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-          </CategoriesContainer>
-          <Button>Show more</Button>
-        </Info>
-      </Item>
-      <Item>
-        <Images src={car} alt="car" />
-        <Info>
-          <Title>Mavericks</Title>
-          <RatingContainer>
-            <Rating href="kphrhr">4.4(2 Reviews)</Rating>
-            <Location>Kyiv, Ukraine</Location>
-          </RatingContainer>
-          <Description>
-            The pictures shown here are example vehicles of the respective.
-          </Description>
-          <CategoriesContainer>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-            <CategoriesItem>3 adults</CategoriesItem>
-          </CategoriesContainer>
-          <Button>Show more</Button>
-        </Info>
-      </Item>
+      {adverts.map(
+        ({
+          _id,
+          name,
+          price,
+          rating,
+          location,
+          adults,
+          children,
+          engine,
+          transmission,
+          description,
+          gallery,
+        }) => (
+          <Item key={_id}>
+            <Images src={gallery[_id]} alt={name} />
+            <Info>
+              <Title>{name}</Title>
+              <RatingContainer>
+                <Rating href="kphrhr">
+                  <svg className="rating__icon" width="16" height="16">
+                    <use href={`${sprite}#icon-star`} />
+                  </svg>
+                  {rating}
+                </Rating>
+                <Location>
+                  <svg
+                    className="location__icon"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="#101828"
+                  >
+                    <use href={`${sprite}#icon-location-map`} />
+                  </svg>
+                  {location}
+                </Location>
+              </RatingContainer>
+              <Description>{description}</Description>
+              <CategoriesContainer>
+                <CategoriesItem>{adults}</CategoriesItem>
+                <CategoriesItem>{engine}</CategoriesItem>
+                <CategoriesItem>{transmission}</CategoriesItem>
+                <CategoriesItem>{children}</CategoriesItem>
+                <CategoriesItem>3 adults</CategoriesItem>
+                <CategoriesItem>3 adults</CategoriesItem>
+              </CategoriesContainer>
+              <Button>Show more</Button>
+            </Info>
+          </Item>
+        )
+      )}
     </ul>
   );
 };

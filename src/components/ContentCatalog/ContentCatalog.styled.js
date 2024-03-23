@@ -53,6 +53,10 @@ export const Description = styled("p")`
   font-weight: 400;
   color: var(--text);
   margin-bottom: 24px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 525px;
 `;
 export const CategoriesContainer = styled("ul")`
   display: flex;
