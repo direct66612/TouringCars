@@ -2,9 +2,13 @@ import { acSvg } from "../../assets/helper/acSvg";
 
 import sprite from "../../assets/svgSprite/sprite.svg";
 
-import { addFavorite } from "../../Redux/favoritesSlice";
+import {
+  addFavorite,
+  getFavorites,
+  deleteFavorite,
+} from "../../Redux/favoritesSlice";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Button,
@@ -23,15 +27,39 @@ import {
   Title,
   TitleContainer,
 } from "./ContentCatalog.styled";
+import { useState } from "react";
+import Backdrop from "../BackDrop/BackDrop";
+import { ModalDetails } from "../ModalDetails/ModalDetails";
 
 export const ContentCatalog = ({ advert }) => {
   const dispatch = useDispatch();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const favorites = useSelector(getFavorites);
+
+  let favoritesButton = { fill: "none", stroke: "#101828" };
+
+  if (favorites.find((el) => el._id === advert._id)) {
+    favoritesButton = { fill: "#e44848", stroke: "#e44848" };
+  } else {
+    favoritesButton = { fill: "none", stroke: "#101828" };
+  }
+
   const handleFavorite = () => {
-    dispatch(addFavorite(advert));
+    if (favorites.find((el) => el._id === advert._id)) {
+      dispatch(deleteFavorite(advert._id));
+    } else {
+      dispatch(addFavorite(advert));
+    }
   };
   return (
     <>
-      <Item key={advert._id}>
+      <Item>
         <Images src={advert.gallery[0]} alt={advert.name} />
         <Info>
           <TitleContainer>
@@ -43,8 +71,7 @@ export const ContentCatalog = ({ advert }) => {
                   className="rating__icon"
                   width="24"
                   height="24"
-                  fill="none"
-                  stroke="#101828"
+                  style={favoritesButton}
                 >
                   <use href={`${sprite}#icon-add-favorite`} />
                 </svg>
@@ -116,8 +143,13 @@ export const ContentCatalog = ({ advert }) => {
               <></>
             )}
           </CategoriesContainer>
-          <Button>Show more</Button>
+          <Button onClick={toggleModal}>Show more</Button>
         </Info>
+        {isModalOpen && (
+          <Backdrop close={toggleModal}>
+            <ModalDetails advert={advert} close={toggleModal} />
+          </Backdrop>
+        )}
       </Item>
     </>
   );

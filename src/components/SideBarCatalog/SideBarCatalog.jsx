@@ -12,9 +12,42 @@ import { acSvg } from "../../assets/helper/acSvg";
 
 import sprite from "../../assets/svgSprite/sprite.svg";
 
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { setupFilter } from "../../Redux/filterSlice";
+
 export const SideBarCatalog = () => {
+  const dispatch = useDispatch();
+  const [checkBox, setCheckBox] = useState({
+    ac: false,
+    automatic: false,
+    kitchen: false,
+    tv: false,
+    shower: false,
+  });
+  const [location, setLocation] = useState("");
+
+  const [radio, setRadio] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setupFilter({ location, checkBox, radio }));
+  };
+
+  const handleLocation = (e) => {
+    const { value } = e.target;
+    setLocation(value);
+  };
+  const handleCheckbox = (event) => {
+    const { value, checked } = event.target;
+    setCheckBox({ ...checkBox, [value]: checked });
+  };
+
+  const handleRadio = (event) => {
+    const { value } = event.target;
+    setRadio(value);
+  };
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Label className="location">
         Location
         <div className="input__location-container">
@@ -23,6 +56,8 @@ export const SideBarCatalog = () => {
             type="text"
             name="location"
             placeholder="City"
+            value={location}
+            onChange={handleLocation}
           />
           <svg
             className="input__location-icon"
@@ -39,14 +74,28 @@ export const SideBarCatalog = () => {
         <Text className="text-first">Vehicle equipment</Text>
         <ContainerCheckBox>
           <label className="checkbox__inner">
-            <input className="checkbox__inner-input" type="checkbox" />
+            <input
+              className="checkbox__inner-input"
+              type="checkbox"
+              name="checkBox"
+              checked={checkBox.ac}
+              value="ac"
+              onChange={handleCheckbox}
+            />
             <span className="checkmark">
               {acSvg}
               <p className="checkmark__text">AC</p>
             </span>
           </label>
           <label className="checkbox__inner">
-            <input className="checkbox__inner-input" type="checkbox" />
+            <input
+              className="checkbox__inner-input"
+              type="checkbox"
+              name="checkBox"
+              checked={checkBox.automatic}
+              value="automatic"
+              onChange={handleCheckbox}
+            />
             <span className="checkmark">
               <svg width="32" height="32" fill="none" stroke="#101828">
                 <use href={`${sprite}#icon-automatic`} />
@@ -55,7 +104,14 @@ export const SideBarCatalog = () => {
             </span>
           </label>
           <label className="checkbox__inner">
-            <input className="checkbox__inner-input" type="checkbox" />
+            <input
+              className="checkbox__inner-input"
+              type="checkbox"
+              name="checkBox"
+              value="kitchen"
+              checked={checkBox.kitchen}
+              onChange={handleCheckbox}
+            />
             <span className="checkmark">
               <svg width="32" height="32" fill="none" stroke="#101828">
                 <use href={`${sprite}#icon-kitchen`} />
@@ -64,7 +120,14 @@ export const SideBarCatalog = () => {
             </span>
           </label>
           <label className="checkbox__inner">
-            <input className="checkbox__inner-input" type="checkbox" />
+            <input
+              className="checkbox__inner-input"
+              type="checkbox"
+              name="checkBox"
+              checked={checkBox.tv}
+              value="tv"
+              onChange={handleCheckbox}
+            />
             <span className="checkmark">
               <svg width="32" height="32" fill="none" stroke="#101828">
                 <use href={`${sprite}#icon-tv`} />
@@ -73,7 +136,14 @@ export const SideBarCatalog = () => {
             </span>
           </label>
           <label className="checkbox__inner">
-            <input className="checkbox__inner-input" type="checkbox" />
+            <input
+              className="checkbox__inner-input"
+              type="checkbox"
+              name="checkBox"
+              value="shower"
+              checked={checkBox.shower}
+              onChange={handleCheckbox}
+            />
             <span className="checkmark">
               <svg width="32" height="32" fill="none" stroke="#101828">
                 <use href={`${sprite}#icon-shower`} />
@@ -85,7 +155,13 @@ export const SideBarCatalog = () => {
         <Text>Vehicle type</Text>
         <ContainerRadio>
           <label className="radio__inner">
-            <input className="radio__inner-input" type="radio" name="type" />
+            <input
+              className="radio__inner-input"
+              onChange={handleRadio}
+              type="radio"
+              value="van"
+              name="radio"
+            />
             <span className="radiomark">
               <svg width="40" height="28" fill="none" stroke="#101828">
                 <use href={`${sprite}#icon-van`} />
@@ -94,7 +170,13 @@ export const SideBarCatalog = () => {
             </span>
           </label>
           <label className="radio__inner">
-            <input className="radio__inner-input" type="radio" name="type" />
+            <input
+              className="radio__inner-input"
+              type="radio"
+              name="radio"
+              value="fullyIntegrated"
+              onChange={handleRadio}
+            />
             <span className="radiomark">
               <svg width="40" height="28" fill="none" stroke="#101828">
                 <use href={`${sprite}#icon-integrated`} />
@@ -103,7 +185,13 @@ export const SideBarCatalog = () => {
             </span>
           </label>
           <label className="radio__inner">
-            <input className="radio__inner-input" type="radio" name="type" />
+            <input
+              className="radio__inner-input"
+              type="radio"
+              name="radio"
+              value="alcove"
+              onChange={handleRadio}
+            />
             <span className="radiomark">
               <svg width="40" height="28" fill="none" stroke="#101828">
                 <use href={`${sprite}#icon-alcove`} />

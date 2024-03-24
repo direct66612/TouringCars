@@ -2,17 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const filterSlice = createSlice({
   name: "filter",
-  initialState: { filter: "" },
+  initialState: {
+    location: "",
+    checkBox: {
+      ac: false,
+      automatic: false,
+      kitchen: false,
+      tv: false,
+      bathroom: false,
+    },
+    radio: { van: false, fullyIntegrated: false, alcove: false },
+  },
   reducers: {
-    filter: (state, action) => {
-      return {
-        ...state,
-        filter: action.payload,
-      };
+    setupFilter(_, action) {
+      return action.payload;
     },
   },
 });
-
-export const { filter } = filterSlice.actions;
+export const { setupFilter } = filterSlice.actions;
+export const filter = (state) => state.filter;
 export const filterReducer = filterSlice.reducer;
-export const getFilter = (state) => state.filter.filter;
