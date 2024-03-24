@@ -40,10 +40,6 @@ export const DetailsList = ({ details }) => {
       }
     }
   }
-  const capitalizeFirstLetter = (word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
-
   return (
     <List>
       {data.map((key, index) => (
@@ -59,7 +55,7 @@ export const DetailsList = ({ details }) => {
               ? details[key]
               : ""}
             {key === "transmission" || key === "engine"
-              ? capitalizeFirstLetter(details[key])
+              ? details[key].charAt(0).toUpperCase() + details[key].slice(1)
               : ` ${key}`}
           </span>
         </Item>

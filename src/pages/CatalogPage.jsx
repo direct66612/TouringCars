@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { getAdvert } from "../Redux/advertSlice";
 import { NoContent } from "../components/NoContent/NoContent";
 import { filter } from "../Redux/filterSlice";
-import { filterCampers } from "../assets/helper/filterFunc";
+import { filterCars } from "../assets/helper/filterFunc";
 
 export const CatalogPage = () => {
   const allCars = useSelector(getAdvert);
@@ -26,7 +26,7 @@ export const CatalogPage = () => {
       setCars(() => [...allCars]);
       return;
     }
-    setCars(filterCampers(allCars, filters));
+    setCars(filterCars(allCars, filters));
   }, [allCars, filters]);
 
   useEffect(() => {

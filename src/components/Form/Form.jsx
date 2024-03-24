@@ -9,98 +9,109 @@ import {
 
 import sprite from "../../assets/svgSprite/sprite.svg";
 
-import * as Yup from "yup";
-
-import { Formik, Form, Field } from "formik";
+import Notiflix from "notiflix";
 
 import "react-datepicker/dist/react-datepicker.css";
 
+import moment from "moment";
+
 import ReactDatePicker from "react-datepicker";
+
 import { useState } from "react";
 
 export const FormSubmit = () => {
-  const supportSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Please enter valid email")
-      .required("Email is required!"),
-    name: Yup.string().required("Name is required!"),
-    date: Yup.string().required("Date is required!"),
-  });
-
-  const initialValues = {
-    name: "",
-    email: "",
-    date: "",
-    comment: "",
-  };
-
-  const [startDate, setStartDate] = useState("");
+  const [date, setDate] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
 
-  const handleChange = (ev) => {
-    if (ev.target.name === "name") setName(ev.target.value);
-    if (ev.target.name === "email") setEmail(ev.target.value);
-    if (ev.target.name === "comment") setComment(ev.target.value);
+  const handleChange = (e) => {
+    if (e.target.name === "name") setName(e.target.value);
+    if (e.target.name === "email") setEmail(e.target.value);
+    if (e.target.name === "comment") setComment(e.target.value);
   };
-  const handleSubmit = (value, { resetForm }) => {
-    resetForm();
+
+  const validateForm = (data) => {
+    let error = false;
+    if (!data.name.trim()) {
+      error = true;
+      const notiflix = () => {
+        return Notiflix.Notify.failure("Name is required");
+      };
+      notiflix();
+    }
+    if (!/\S+@\S+\.\S+/.test(data.email)) {
+      error = true;
+      const notiflix = () => {
+        return Notiflix.Notify.failure("Need is correct Email");
+      };
+      notiflix();
+    }
+    if (!moment(data.date, "MM/DD/YYYY", true).isValid()) {
+      error = true;
+      const notiflix = () => {
+        return Notiflix.Notify.failure("Need is correct data");
+      };
+      notiflix();
+    }
+    return error;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = { date, email, comment, name };
+    if (!validateForm(data)) {
+      window.location.reload();
+    }
   };
 
   return (
     <FormContainer>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={supportSchema}
-        onSubmit={handleSubmit}
-      >
-        <Form className="form__container">
-          <Title>Book your campervan now</Title>
-          <Description>
-            Stay connected! We are always ready to help you.
-          </Description>
-          <Field
-            className="form__input"
-            type="text"
-            name="name"
-            onChange={handleChange}
-            value={name}
-            placeholder="Name"
+      <form onSubmit={handleSubmit} className="form__container">
+        <Title>Book your campervan now</Title>
+        <Description>
+          Stay connected! We are always ready to help you.
+        </Description>
+        <input
+          className="form__input"
+          type="text"
+          name="name"
+          onChange={handleChange}
+          value={name}
+          placeholder="Name"
+        />
+        <input
+          className="form__input"
+          type="email"
+          name="email"
+          onChange={handleChange}
+          value={email}
+          placeholder="Email"
+        />
+        <Calendar>
+          <CalendarIcon className="calendarIcon" width={20} height={20}>
+            <use href={`${sprite}#icon-calendar`} />
+          </CalendarIcon>
+          <ReactDatePicker
+            useWeekdaysShort={true}
+            required
+            calendarStartDay={1}
+            name="date"
+            selected={date}
+            onChange={(date) => setDate(date)}
+            placeholderText="Booking date"
           />
-          <Field
-            className="form__input"
-            type="email"
-            name="email"
-            onChange={handleChange}
-            value={email}
-            placeholder="Email"
-          />
-          <Calendar>
-            <CalendarIcon className="calendarIcon" width={20} height={20}>
-              <use href={`${sprite}#icon-calendar`} />
-            </CalendarIcon>
-            <ReactDatePicker
-              useWeekdaysShort={true}
-              required
-              calendarStartDay={1}
-              name="date"
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              placeholderText="Booking date"
-            />
-          </Calendar>
-          <Field
-            className="form__textarea"
-            name="comment"
-            value={comment}
-            as="textarea"
-            onChange={handleChange}
-            placeholder="Comment"
-          ></Field>
-          <Button type="submit">Send</Button>
-        </Form>
-      </Formik>
+        </Calendar>
+        <input
+          className="form__textarea"
+          name="comment"
+          value={comment}
+          as="textarea"
+          onChange={handleChange}
+          placeholder="Comment"
+        ></input>
+        <Button type="submit">Send</Button>
+      </form>
     </FormContainer>
   );
 };
