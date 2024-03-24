@@ -1,5 +1,5 @@
-import { Container } from "../components/Container/Container";
+import { Welcome } from "../components/Welcome/Welcome";
 
 export const WelcomePage = () => {
-  return <Container>WelcomePage</Container>;
+  return <Welcome />;
 };
