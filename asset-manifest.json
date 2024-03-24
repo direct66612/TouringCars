@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/TouringCars/static/css/main.2bfe816e.css",
+    "main.js": "/TouringCars/static/js/main.802a3dfe.js",
+    "static/media/sprite.svg": "/TouringCars/static/media/sprite.3a46fc19b74dc8081a4870ddc0cf435c.svg",
+    "index.html": "/TouringCars/index.html",
+    "main.2bfe816e.css.map": "/TouringCars/static/css/main.2bfe816e.css.map",
+    "main.802a3dfe.js.map": "/TouringCars/static/js/main.802a3dfe.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2bfe816e.css",
+    "static/js/main.802a3dfe.js"
+  ]
+}
