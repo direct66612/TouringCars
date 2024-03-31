@@ -1,58 +1,55 @@
-Створив застосунок для компанії, що надає послуги надання в Україні камперів в оренду. Застосунок складається з 3х сторінок:
+I created an application for a company that provides camper van rental services in Ukraine. The application consists of 3 pages:
 
-домашня сторінка з загальним описом послуг, що надає компанія.
-сторінка, що містить каталог камперів різної комплектації, які користувач може фільтрувати за місцем знаходження, обладнанням та типом
-сторінка з оголошеннями, які були додані користувачем в улюблені
-Зовнішній вигляд програми складатється з навігації та області перегляду.
+home page with a general description of the services provided by the company. a page containing a catalog of campers of various configurations, which the user can filter by location, equipment and type, a page with ads that have been added by the user to favorites The appearance of the program consists of navigation and a viewing area.
 
-Технічне завдання
+Technical task
 
-Відповідно до макету реалізував картку оголошення про здачу кампера в оренду.
+According to the layout, I implemented a card announcing the rental of a camper.
 
-На першій сторінці каталогу рендеритися 4 оголошень, а їх решта - по кліку на кнопку Load more.
+4 ads will be rendered on the first page of the catalog, and the rest of them - by clicking on the Load more button.
 
-У разі кліку по кнопці у вигляді “серця” на картці оголошення воно додається до списку улюблених,  а колір кнопки змінюється.
+If you click on the button in the form of a "heart" on the ad card, it is added to the list of favorites, and the color of the button changes.
 
-При оновленні сторінки фіксується кінцевий результат дій користувача. Тобто, якщо додати оголошення в улюблені та оновити сторінку - то кнопка все одно залишається в стані “улюбленого оголошення” із відповідним кольором.
+When the page is updated, the final result of the user's actions is fixed. That is, if you add an ad to your favorites and refresh the page, the button still remains in the "favorite ad" state with the appropriate color.
 
-У разі повторного кліку по кнопці у вигляді “серця” оголошення видаляється зі списку улюблених,  а колір кнопки змінюється до початкового стану.
+If you click the heart button again, the ad is removed from the list of favorites, and the color of the button changes to its original state.
 
-У разі кліку по кнопці Show more відкривається модальне вікно з детальною інформацією про кампер.
+Clicking the Show more button opens a modal window with detailed information about the camper.
 
-Модальне вікно закривається по кліку на кнопку у вигляді “хрестика”, по кліку на backdrop  та натисканню на клавішу Esc.
+The modal window is closed by clicking on the button in the form of a "cross", by clicking on the backdrop and pressing the Esc key.
 
-В модальному вікні міститься інформація щодо особливостей кампера і відгуків про нього. Відмалювання інформації залежить від стану активної таби.
+The modal window contains information about the characteristics of the camper and reviews about it. Drawing information depends on the state of the active tab.
 
-В модальному вікні також міститься форма для оформлення бронювання камперу, що складається з полів name, email, booking date і comment. Поля name, email, booking date є обовʼязковими до заповнення і проходять перевірку на валідність введених значень.(У випадку невалідних даних форма не відправляється, у випадку валідної форми - сторінка оновлюється).
+The modal window also contains a form for making a camper reservation, consisting of the fields name, email, booking date and comment. The fields name, email, and booking date are required to be filled in and are checked for the validity of the entered values.
 
-Ціна оренди прописана одним значенням (наприклад, 8000). В UI - виведено через кому (8000,00).
+The rental price is written in one value (for example, 8000). In the UI - displayed with a comma (8000.00).
 
-Для роботи зі списком оголошень створив свій персональний бекенд для розробки за допомогою UI-сервісу https://mockapi.io/.
+To work with the list of ads, I created my personal backend for development using the UI service https://mockapi.io/.
 
-Створив  advert в Mockapi з наступними полями: _id,  name, price, rating, location, adults, children, engine, transmission, form, length, width, height, tank, consumption, description, details, gallery, reviews.Для наповнення колекції взяв adverts.json
+I created an advert in Mockapi with the following fields: _id, name, price, rating, location, adults, children, engine, transmission, form, length, width, height, tank, consumption, description, details, gallery, reviews. To fill the collection, I took adverts.json
 
-В базі є від 13 оголошень з різними значеннями. Реалізована пагінація, де одна сторінка пагінації повинна вміщувати 4 оголошення.
+The database contains from 13 ads with different meanings. Implemented pagination, where one pagination page should contain 4 ads.
 
-Створив маршрутизацію, використовуючи React Router.
+Created routing using React Router.
 
-У застосунку такі маршрути:
+The application has the following routes:
 
-“/” - домашня сторінка з загальним описом послуг, що надає компанія
+"/" - home page with a general description of services provided by the company
 
-“/catalog” - сторінка, що містить каталог камперів різної комплектації
+"/catalog" - a page containing a catalog of campers of various configurations
 
-“/favorites” - сторінка з оголошеннями, які були додані користувачем в улюблені
+“/favorites” - a page with ads that have been added to favorites by the user
 
-Якщо користувач зайшов за маршрутом, якого не існує, його перенаправляє на  домашню сторінку.
+If the user entered by a route that does not exist, he is redirected to the home page.
 
-Додав фільтрацію
+Added filtering
 
-Верстка фіксована в рх, семантична та валідна.
+The layout is fixed in rh, semantic and valid.
 
-Використовую Redux.
+I use Redux.
 
-Для запитів використовується бібліотека Axios
+The Axios library is used for queries
 
-Робота виконана на React.
+The work is done on React.
 
-Інтерактивність працює відповідно до технічного завдання.
+Interactivity works according to the terms of reference.
