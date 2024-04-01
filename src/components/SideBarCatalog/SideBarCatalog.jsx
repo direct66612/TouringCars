@@ -30,7 +30,8 @@ export const SideBarCatalog = () => {
   const [radio, setRadio] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setupFilter({ location, checkBox, radio }));
+    const validateLocation = location.trim();
+    dispatch(setupFilter({ location: validateLocation, checkBox, radio }));
   };
 
   const handleLocation = (e) => {

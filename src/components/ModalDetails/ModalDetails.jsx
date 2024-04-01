@@ -12,6 +12,8 @@ import {
   ButtonContainer,
   Line,
   Option,
+  ModalWrapper,
+  ModalScroll,
 } from "./ModalDetails.styled";
 
 import sprite from "../../assets/svgSprite/sprite.svg";
@@ -47,15 +49,19 @@ export const ModalDetails = ({ advert, close }) => {
           {advert.location}
         </Rating>
       </RatingContainer>
-      <Price>€{advert.price}</Price>
-      <GalleryList>
-        {advert.gallery.map((elem, index) => (
-          <GalleryItem key={index}>
-            <img src={elem} alt={advert.name} />
-          </GalleryItem>
-        ))}
-      </GalleryList>
-      <Text>{advert.description}</Text>
+      <Price>€{advert.price.toFixed(2)}</Price>
+      <ModalWrapper>
+        <ModalScroll>
+          <GalleryList>
+            {advert.gallery.map((elem, index) => (
+              <GalleryItem key={index}>
+                <img src={elem} alt={advert.name} />
+              </GalleryItem>
+            ))}
+          </GalleryList>
+          <Text>{advert.description}</Text>
+        </ModalScroll>
+      </ModalWrapper>
       <ButtonContainer>
         <button
           onClick={() => handleTabClick(1)}

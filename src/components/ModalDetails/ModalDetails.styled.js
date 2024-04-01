@@ -5,7 +5,7 @@ export const ModalContainer = styled("div")`
   border-radius: 20px;
   padding: 40px;
   width: 982px;
-  max-height: calc(100vh - 2%);
+  max-height: 720px;
   background-color: #fff;
   overflow: auto;
 `;
@@ -40,14 +40,22 @@ export const Price = styled("span")`
   font-size: 24px;
   margin-bottom: 24px;
 `;
+export const ModalWrapper = styled("div")`
+  height: 410px;
+  margin-bottom: 24px;
+  margin-right: -24px;
+  overflow-y: auto;
+`;
+export const ModalScroll = styled("div")`
+  max-width: 902px;
+`;
 export const GalleryList = styled("ul")`
-  gap: 16px;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  gap: 16px;
   height: 310px;
-  overflow: auto;
   margin-bottom: 24px;
+  width: 100%;
 `;
 export const GalleryItem = styled("li")`
   width: 275px;
@@ -66,8 +74,6 @@ export const Text = styled("p")`
   font-size: 16px;
   line-height: 1.5;
   color: #475467;
-  max-height: 72px;
-  overflow-y: auto;
   margin-bottom: 44px;
 `;
 export const ButtonContainer = styled("div")`

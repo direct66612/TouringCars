@@ -65,7 +65,7 @@ export const ContentCatalog = ({ advert }) => {
           <TitleContainer>
             <Title>{advert.name}</Title>
             <PriceContainer>
-              <Price>${advert.price}</Price>
+              <Price>€{advert.price.toFixed(2)}</Price>
               <FavoritesButton onClick={handleFavorite}>
                 <svg
                   className="rating__icon"

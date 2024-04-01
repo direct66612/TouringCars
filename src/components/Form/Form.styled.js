@@ -47,7 +47,7 @@ export const CalendarIcon = styled("svg")`
   fill: #fff;
   stroke: #000;
   top: 18px;
-  right: 18px;
+  right: 26px;
   z-index: 25;
   pointer-events: none;
 `;
