@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/TouringCars/static/css/main.2bfe816e.css",
-    "main.js": "/TouringCars/static/js/main.802a3dfe.js",
+    "main.css": "/TouringCars/static/css/main.7c8648f3.css",
+    "main.js": "/TouringCars/static/js/main.0bb25f80.js",
+    "static/media/Inter-SemiBold.ttf": "/TouringCars/static/media/Inter-SemiBold.6058d3da655fb35169c2.ttf",
+    "static/media/Inter-Medium.ttf": "/TouringCars/static/media/Inter-Medium.3f7acfe50aad7ad68548.ttf",
+    "static/media/Inter-Regular.ttf": "/TouringCars/static/media/Inter-Regular.9ca9ba81e9dcaa12b3a1.ttf",
     "static/media/sprite.svg": "/TouringCars/static/media/sprite.3a46fc19b74dc8081a4870ddc0cf435c.svg",
     "index.html": "/TouringCars/index.html",
-    "main.2bfe816e.css.map": "/TouringCars/static/css/main.2bfe816e.css.map",
-    "main.802a3dfe.js.map": "/TouringCars/static/js/main.802a3dfe.js.map"
+    "main.7c8648f3.css.map": "/TouringCars/static/css/main.7c8648f3.css.map",
+    "main.0bb25f80.js.map": "/TouringCars/static/js/main.0bb25f80.js.map"
   },
   "entrypoints": [
-    "static/css/main.2bfe816e.css",
-    "static/js/main.802a3dfe.js"
+    "static/css/main.7c8648f3.css",
+    "static/js/main.0bb25f80.js"
   ]
 }
